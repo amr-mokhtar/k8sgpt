@@ -45,7 +45,7 @@ var AnalyzeCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 
 		// AnalysisResult configuration
-		config, err := analysis.NewAnalysis(backend,
+		config, err := analysis.NewAnalysis(backend, // [AMR]: analyzer handler from commandline
 			language, filters, namespace, nocache, explain, maxConcurrency, withDoc)
 		if err != nil {
 			color.Red("Error: %v", err)

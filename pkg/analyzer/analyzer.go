@@ -31,7 +31,7 @@ var (
 	}, []string{"analyzer_name", "object_name", "namespace"})
 )
 
-var coreAnalyzerMap = map[string]common.IAnalyzer{
+var coreAnalyzerMap = map[string]common.IAnalyzer{ // <-- [AMR]: This is the list of built-in analyzers (core analyzer)
 	"Pod":                            PodAnalyzer{},
 	"Deployment":                     DeploymentAnalyzer{},
 	"ReplicaSet":                     ReplicaSetAnalyzer{},
@@ -45,10 +45,11 @@ var coreAnalyzerMap = map[string]common.IAnalyzer{
 	"MutatingWebhookConfiguration":   MutatingWebhookAnalyzer{},
 }
 
-var additionalAnalyzerMap = map[string]common.IAnalyzer{
+var additionalAnalyzerMap = map[string]common.IAnalyzer{ // <-- [AMR]: Additional analyzers - can I add my own here?
 	"HorizontalPodAutoScaler": HpaAnalyzer{},
 	"PodDisruptionBudget":     PdbAnalyzer{},
 	"NetworkPolicy":           NetworkPolicyAnalyzer{},
+	"Login":                   LoginAnalyzer{},
 }
 
 func ListFilters() ([]string, []string, []string) {

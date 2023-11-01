@@ -24,7 +24,7 @@ func (h *handler) Analyze(ctx context.Context, i *schemav1.AnalyzeRequest) (
 		i.MaxConcurrency = 10
 	}
 
-	config, err := analysis.NewAnalysis(
+	config, err := analysis.NewAnalysis( // [AMR]: analyzer handler from gRPC API
 		i.Backend,
 		i.Language,
 		i.Filters,

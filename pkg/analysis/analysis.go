@@ -168,7 +168,7 @@ func (a *Analysis) RunAnalysis() {
 			semaphore <- struct{}{}
 			go func(analyzer common.IAnalyzer, wg *sync.WaitGroup, semaphore chan struct{}) {
 				defer wg.Done()
-				results, err := analyzer.Analyze(analyzerConfig)
+				results, err := analyzer.Analyze(analyzerConfig) // <-- [AMR]: This is where the analyzer is called
 				if err != nil {
 					mutex.Lock()
 					a.Errors = append(a.Errors, fmt.Sprintf("[%s] %s", reflect.TypeOf(analyzer).Name(), err))
