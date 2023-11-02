@@ -79,7 +79,7 @@ func (SecurityAnalyzer) Analyze(a common.Analyzer) ([]common.Result, error) { //
 	}
 
 	if len(failures) > 0 {
-		preAnalysis[node.Name] = common.PreAnalysis{
+		preAnalysis["bruteforceattack"] = common.PreAnalysis{
 			Node:           node,
 			FailureDetails: failures,
 		}
