@@ -38,7 +38,7 @@ ifeq (, $(shell git status --porcelain 2>/dev/null))
 endif
 GIT_COMMIT:=$(shell git rev-parse HEAD)
 
-IMG ?= ghcr.io/k8sgpt-ai/k8sgpt:latest
+IMG ?= ghcr.io/k8sgpt-ai/k8sgpt:1.0
 
 BUILDFILE = "./main.go"
 BUILDAPP = "$(OUTPUT_DIR)/k8sgpt"
@@ -83,7 +83,7 @@ undeploy: helm
 .PHONY: docker-build
 docker-build:
 	@echo "===========> Building docker image"
-	docker buildx build --build-arg=VERSION="$$(git describe --tags --abbrev=0)" --build-arg=COMMIT="$$(git rev-parse --short HEAD)" --build-arg DATE="$$(date +%FT%TZ)" --platform="linux/amd64,linux/arm64" -t ${IMG} -f container/Dockerfile . --push
+	sudo docker buildx build --build-arg=VERSION="$$(git describe --tags --abbrev=0)" --build-arg=COMMIT="$$(git rev-parse --short HEAD)" --build-arg DATE="$$(date +%FT%TZ)" --platform="linux/amd64" -t ${IMG} -f container/Dockerfile .
 
 ## fmt: Run go fmt against code.
 .PHONY: fmt

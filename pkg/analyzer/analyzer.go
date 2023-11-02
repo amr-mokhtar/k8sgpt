@@ -43,13 +43,13 @@ var coreAnalyzerMap = map[string]common.IAnalyzer{ // <-- [AMR]: This is the lis
 	"Node":                           NodeAnalyzer{},
 	"ValidatingWebhookConfiguration": ValidatingWebhookAnalyzer{},
 	"MutatingWebhookConfiguration":   MutatingWebhookAnalyzer{},
+	"Security":                       SecurityAnalyzer{},
 }
 
 var additionalAnalyzerMap = map[string]common.IAnalyzer{ // <-- [AMR]: Additional analyzers - can I add my own here?
 	"HorizontalPodAutoScaler": HpaAnalyzer{},
 	"PodDisruptionBudget":     PdbAnalyzer{},
 	"NetworkPolicy":           NetworkPolicyAnalyzer{},
-	"Login":                   LoginAnalyzer{},
 }
 
 func ListFilters() ([]string, []string, []string) {

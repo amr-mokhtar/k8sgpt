@@ -34,6 +34,5 @@ LABEL org.opencontainers.image.source="https://github.com/k8sgpt-ai/k8sgpt" \
 
 WORKDIR /
 COPY --from=builder /workspace/k8sgpt .
-USER 65532:65532
 
 ENTRYPOINT ["/k8sgpt"]
